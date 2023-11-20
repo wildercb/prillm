@@ -19,10 +19,10 @@ def prepare(
     destination_path: Path = Path("data/text"),
     checkpoint_dir: Path = Path("checkpoints/EleutherAI/pythia-70M"),
     seed: int = 42,
+    text_data = "data/text/privacydata.txt",
     test_size: Union[float, int, None] = 0.2,  # Adjust the test size as needed
 ) -> None:
     destination_path.mkdir(parents=True, exist_ok=True)
-    text_data = "data/text/privacydata.txt"
     tokenizer = Tokenizer(checkpoint_dir)
 
     # number of workers in .map() call
