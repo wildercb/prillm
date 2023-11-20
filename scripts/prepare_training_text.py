@@ -16,7 +16,7 @@ from lit_gpt import Tokenizer
 
 
 def prepare(
-    destination_path: Path = Path("data/text"),
+    output_dir: Path = Path("data/text"),
     checkpoint_dir: Path = Path("checkpoints/EleutherAI/pythia-70M"),
     seed: int = 42,
     text_data = "data/text/privacydata.txt",
