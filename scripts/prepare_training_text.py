@@ -18,12 +18,11 @@ from lit_gpt import Tokenizer
 def prepare(
     destination_path: Path = Path("data/text"),
     checkpoint_dir: Path = Path("checkpoints/EleutherAI/pythia-70M"),
-    input_path: Path = Path("data/text/privacydata"),
     seed: int = 42,
     test_size: Union[float, int, None] = 0.2,  # Adjust the test size as needed
 ) -> None:
     destination_path.mkdir(parents=True, exist_ok=True)
-
+    text_data = "data/text/privacydata.txt"
     tokenizer = Tokenizer(checkpoint_dir)
 
     # number of workers in .map() call
@@ -31,7 +30,7 @@ def prepare(
     num_proc = os.cpu_count() // 2
 
     # Load the text file
-    with open("data/text/privacydata.txt", "r", encoding="utf-8") as f:
+    with open(text_data, "r", encoding="utf-8") as f:
         text_data = f.read()
 
     # Split the dataset into train and test sets

@@ -57,9 +57,9 @@ hparams = {k: v for k, v in locals().items() if isinstance(v, (int, float, str))
 
 
 def setup(
-    data_dir: Path = Path("data/dolly"),
+    data_dir: Path = Path("data/csv"),
     checkpoint_dir: Path = Path("checkpoints/EleutherAI/pythia-70m"),
-    out_dir: Path = Path("out/lora/alpaca"),
+    out_dir: Path = Path("out/lora/pythiaSnli"),
     precision: Optional[str] = None,
     quantize: Optional[Literal["bnb.nf4", "bnb.nf4-dq", "bnb.fp4", "bnb.fp4-dq", "bnb.int8-training"]] = None,
 ) -> None:
@@ -245,7 +245,7 @@ def validate(fabric: L.Fabric, model: GPT, val_data: List[Dict], tokenizer: Toke
     val_loss = losses.mean()
 
     # produce an example:
-    instruction = "Recommend a movie for me to watch during the weekend and explain the reason."
+    instruction = "Natural language inference is"
     fabric.print(instruction)
     sample = {"instruction": instruction, "input": ""}
     prompt = generate_prompt(sample)
