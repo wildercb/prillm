@@ -22,7 +22,7 @@ def prepare(
     text_data = "data/text/privacydata.txt",
     test_size: Union[float, int, None] = 0.2,  # Adjust the test size as needed
 ) -> None:
-    destination_path.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     tokenizer = Tokenizer(checkpoint_dir)
 
     # number of workers in .map() call
